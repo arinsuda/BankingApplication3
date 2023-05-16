@@ -1,6 +1,7 @@
 
 package bankingapplication3;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class BankingApplication3 {
@@ -31,8 +32,9 @@ public class BankingApplication3 {
             switch(option){
                 case 1:
                     bank.listAccounts();
+                    break;
                 case 2:
-                    number = 111111;
+                    number = generateAccountNumber();
                     System.out.print("Enter Account Name : ");
                     name = scan.nextLine();
                     System.out.print("Enter Initial Balance : ");
@@ -44,12 +46,14 @@ public class BankingApplication3 {
                     System.out.print("Enter Account Number : ");
                     number = scan.nextInt();
                     bank.closeAccount(number);
+                    System.out.println("Account is Delete");
+                    System.out.println();
                     break;
                 case 4:
-                    System.out.print("Enter Account Number :");
+                    System.out.print("Enter Account Number: ");
                     number = scan.nextInt();
                     account = bank.getAccount(number);
-                    System.out.print("Enter Amount :");
+                    System.out.print("Enter Amount: ");
                     amount = scan.nextDouble();
                     bank.depositMoney(account, amount);
                     break;
@@ -66,5 +70,9 @@ public class BankingApplication3 {
         }
         
     }
-    
+    public static int generateAccountNumber(){
+        Random random = new Random();
+        int accNumber = 100000 + random.nextInt(900000);
+        return accNumber;
+    }
 }
